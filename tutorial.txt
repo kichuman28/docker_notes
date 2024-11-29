@@ -1,0 +1,64 @@
+What is docker?
+=> It's a virtualisation software. 
+=> Makes developing and deploying applications easier.
+=> Packages apps with everything you need such as dependencies, configurations, system tools, runtime etc.
+=> Basically a standardized unit that has everything you need to run. 
+=> It's portable, easily shared and distributed.
+
+
+How was the development process before containers?
+=> Before if a team is working on the development of some application and I wanted to run it in my system,
+I had to install all the necessary software in my OS to run it. This is a pain in the ass for the for 2 reasons
+1) Installation process is different for each OS environment. (MacOS, Windows) 
+2) Many steps where something can go wrong.
+
+How did docker solve this issue?
+=> Docker gives us our own isolated environment.
+=> For example if we are using Postgres then  it is packaged with all the dependencies and configurations I need.
+
+How do we do it?
+=> If I want the Postgres environment in my system, I run the docker command first. That is universal for every OS.
+The command is 'docker run postgress'.
+=> What happens is that it fetches the container containing postgres environment and installs it in your computer.
+=> Same for all services as well (javascript, numpy whatever it is)
+=> We can also run different versions of the same sevice without any conflicts like 
+redis 3.1, redis 3.5, redis 4.5 etc
+
+TL:DR => Docker standardizes the process of running any service on any local dev environment.
+
+How was the deployment process done before containers?
+=> The development team would develop a package/artifact (for the service & database) and create a set of instructions on how to run them.
+=> This is given to the operations team who tries to set this whole thing up on the server. 
+=> During this process besides being a pain installing everything manually, many things can go wrong such as miscommunication, human errors etc.
+
+How is the deployment process done with docker?
+=> The deployment team creates a docker artifact where everything is packaged, including the source code, dependencies, configs etc
+=> Now the ops team only have to install docker on the server and run the docker file for each services. Easy.
+
+
+Why is docker used so widely and what is the difference between docker and virtual machines then? Aren't they the same?
+=> To answer this question we need to know how an OS works. So an OS has two layers. One layer is the Kernel layer and the 
+other is the application layer. So the kernel layer interacts with the hardware and allocates the resources to the application 
+layer. The application layer is where all applications run on the OS's power.
+
+=> So a virtual machine virtualizes both the layers. The application as well as the kernel.
+=> Docker container only virtualizes the application layer. 
+
+So what are the major differences between the two?
+
+Size
+=> Docker images, couple of MB (Only application layer)
+=> VM Images, couple of GB (Both OS Kernel & OS application layer)
+
+Speed
+=> Docker images takes only seconds to start
+=> VMs takes minutes to start.
+
+Compatibility 
+=> Docker is only compatible with linux distributions. It was originally made for linux
+=> VM is compatible with all OS, as even the kernel is virtualised.
+
+So can docker work on Windows and Mac? 
+=> The docker application layer is linux based so it can't work on windows or mac kernel. 
+That's where Docker Desktop comes in. 
+=> Docker desktop uses a hypervisor with a linux distribution which allows the docker images to work on windows and mac.
