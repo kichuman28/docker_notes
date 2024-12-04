@@ -1,0 +1,30 @@
+(1) docker images : Shows me a list of all the images which are available locally.
+
+(2) docker ps : Shows me a list of all the running containers/instances I have currently.
+
+    Variations of "docker ps" command
+    (i) docker ps -a : Used to show the list of all running and stopped containers.
+
+(3) docker pull {name}:tag = Pulls an image from the Docker Registry.
+
+(4) docker run {name}:{tag} = Creates a container/instance from the given image and starts it.
+NOTE 1: We necessarily don't have to pull a service to run it. If we directly run this command even if the service is not there in our
+system it will fetch it from the docker registry and run it. 
+
+    Variations of "docker run" command
+    (i) docker run -d {name}:{tag} = -d or --detach allows us to run the container in the background and prints the container ID
+    If we run this command we will not be able to see the logs like the normal command. So to see the logs there's another command below.
+
+    (ii) docker run -p{HOST_PORT}:{CONTAINER_PORT} {name}:{tag} : Exposes the container to the local network. (-p or --publish = publish a container's port to the host)
+    NOTE: Standard is to use the host port number as the same container port number.
+
+    (iii) docker run --name {name of container} : Used to give a name to the container.
+
+
+(5) docker log {container name/id} : Views logs from service running inside the container(which are present at the time of execution).  
+Here the container stands for the container ID which we can get from the 'docker ps' command.
+
+(6) docker stop {container name/id} : Stops the instance/container.
+
+(7) docker start {container id/name} : Used to start a stopped container again.
+
