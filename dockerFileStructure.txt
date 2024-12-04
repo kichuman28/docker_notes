@@ -80,3 +80,12 @@ RUN : Will execute any command in a shell inside the container environment.
 COPY : Copies files or directories from <src> and adds them to a file system of the container at the path <desc>
 WORKDIR : Sets the working directory for all the following commands. 
 CMD: The instruction that is to be executed when a docker container starts
+
+
+
+TL:DR => Steps to write a dockerfile (Order is important)
+(1) Set up the environment using "FROM" command
+(2) Move all the files from the src to dest using "COPY" command
+(3) Set up the working directory using "WORKDIR" command
+(4) Now tell the command to install the packages using "RUN"
+(5) Tell the command to execute the application using "CMD"

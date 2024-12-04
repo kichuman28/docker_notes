@@ -130,3 +130,8 @@ Registries is where we store both private and public Images.
 (Q.19)  How do we make custom images for our application?
 => To start creating our own custom images, first we have to write a "definition" of how to build an image from our application. We write this
 definition in a file called 'Dockerfile'. For more info check the Dockerfile_structure.txt.
+
+(Q.20)  What's the next step after writing the dockerfile?
+=> After writing the dockerfile, now you need to build it as an image. For that you simply run the "build" command using 
+"docker build {location of dockerfile}". We can also give our image a name and version using the "-t" flag. Now the syntax looks like
+"docker build -t {name of image}:{version} {location of dockerfile}"

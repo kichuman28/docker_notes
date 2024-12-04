@@ -28,3 +28,7 @@ Here the container stands for the container ID which we can get from the 'docker
 
 (7) docker start {container id/name} : Used to start a stopped container again.
 
+(8) docker build {location of dockerfile} : Used to run the dockerfile to make an image 
+
+    Variations of "docker build" command
+    (i) docker build -t {name of image}:{version} {location of dockerfile} : -t or --tag allows us to give a name and version for the image we are making.
