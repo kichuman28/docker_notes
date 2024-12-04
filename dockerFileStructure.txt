@@ -1,0 +1,82 @@
+Use Case: Supppose you need to run a website you pulled from Github in your laptop. What are the steps to run the application?
+
+Step 1: Install the environment for it to run, in this case, node. 
+Step 2: Install the packages in the package.json file using "npm i" command
+Step 3: Move into the directory where the start file exists using CD.
+Step 4: Execute the command for running the app, in this case "npm run start".
+
+So building a custom image has pretty much these same steps, here I'll be creating a custom image for a simple node application using express.
+
+
+
+
+
+Step 1: Next we need a base image on which we are building our own custom image. See it's if I'm creating a node application I know I need
+node for it. I am not going to create my own version of node. I just download node from the internet and start building from that as my base.
+Similary for an image, it needs that "downloading of node from the internet". Here we provide that "node" as the base image, which is an image
+we provide from the DockerHub which has the official images of the service which we want. Here I am using node for my application, so I provide
+a node image from DockerHub as the base image. I can give any version I want. It's like installing different versions like python 3.11, 3.12 etc 
+but for images. So Dockerfiles MUST start with instruction "FROM". It creates the runtime environment for our custom image from this base image. 
+
+Syntax : FROM {name}:{tag/version}
+Example: FROM node:19-alpine
+
+
+
+
+
+Step 2: Suppose I have a web app project I cloned from Github. To run the project I first need to install the packages/dependencies using npm i. 
+Similarly for the application in our image to work when we run the container, it also needs to install the packages. To implement this step including
+images we use the command "RUN". It can be used to run any command, for example moving into a directory which we will be discussing soon.
+
+Syntax : RUN {paste command}
+Example : RUN npm install 
+
+
+
+
+
+Step 3: Now I need to add the code from my local system to the custom image. I do this using the "COPY" command. It basically copies the code files
+from my system to the to container. While "RUN" is executed on the container, "COPY" is executed on the host. I can copy individual files or entire folders as well. 
+
+Syntax : COPY {file name on host} {file name on destination(container)}
+Example 1(Single file) : COPY package.json /app/    
+Example 2(Folder)      : COPY src /app/ 
+
+NOTE: Here app is the name of the folder in the container. The '/' after app is really important as it creates a folder called 'app' if it doesn't 
+exist in the container yet.  
+
+
+
+
+
+Step 4: So now we need to move to the working directory in the container where we will be executing the commands to run the application
+, similar to step 3 in line 5. For that we use "WORKDIR" command.
+
+Syntax: WORKDIR {name of directory}
+Example: WORKDIR /app
+
+
+
+
+
+Step 5: Now I need to run the final command to execute the application inside the container, similar to step 4 in line 6. The command
+for this is called "CMD". This should be the final command in the docker file. There can be only one "CMD" instruction in a docker file. 
+
+Syntax: CMD ["list", "of", "keywords", "in", "execution", "command"]
+Example: CMD ["npm", "run", "start"]
+
+
+
+
+
+
+
+
+                                                        COMMANDS OVERVIEW
+
+FROM : Build the custom image from the specified image
+RUN : Will execute any command in a shell inside the container environment.
+COPY : Copies files or directories from <src> and adds them to a file system of the container at the path <desc>
+WORKDIR : Sets the working directory for all the following commands. 
+CMD: The instruction that is to be executed when a docker container starts

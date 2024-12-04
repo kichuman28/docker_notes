@@ -116,3 +116,17 @@ shows the list of active containers. If we want to see the list of all the conta
 "docker ps -a" where a stands for "-a or --all : List of all stopped and running containers". If we want to run any stopped containers again
 we can type docker ps -a, check out either the container ID or container name and again run that same container using the command called
 "docker start {container id/name}".
+
+
+(Q.17)  What are Private Docker Registries?
+=> So Docker Hub is a public Docker Registry where the Docker Images are shared to the general public and it can be seen by everyone.
+What if some company created a Docker Image for their software and wants it to store somewhere private? This is the reason why private docker
+registries exits. Every cloud service provider has their own private docker registry. Even Docker has one of it's own.
+
+(Q.18)  What is the difference between Docker Registry and Docker Repository?
+=> Docker Repository is provided by cloud services where we can store the Images of our applications with different versions, whereas Docker 
+Registries is where we store both private and public Images. 
+
+(Q.19)  How do we make custom images for our application?
+=> To start creating our own custom images, first we have to write a "definition" of how to build an image from our application. We write this
+definition in a file called 'Dockerfile'. For more info check the Dockerfile_structure.txt.
